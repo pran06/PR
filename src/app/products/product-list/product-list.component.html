@@ -1,1 +1,55 @@
-<p>product-list works!</p>
+
+<div class="card">
+
+    <div class="card-header">
+      {{pageTitle}}
+    </div>
+  
+    <div class="card-body">
+      <div class="row">
+        <div class="col-mod-2">Search by :        </div>
+        <div class="col-mod-4">
+          <input type="text" [(ngModel)]='filterString' />
+        </div>
+      </div>
+     
+    </div>
+  
+    <div class='table-responsive'>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>
+             Image
+            </th>
+            <th>Product</th>
+            <th>Code</th>
+            <th>Available</th>
+            <th>Price</th>
+            <th>Rating</th>
+  
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor='let product of filteredProducts'>
+            <td>
+              <img  [src]= 'product.imageUrl'>          
+            </td>
+            <td> <a [routerLink]="['/products', product.id]">
+                {{ product.name }}
+              </a></td>
+            <td>{{product.code | uppercase | convertToSpaces: '-' }}</td>
+            <td>{{product.releaseDate}}</td>
+            <td>{{product.price|currency:'USD':'symbol'}}</td>
+            <td>
+              <app-star [rating]='product.starRating'
+                       (ratingClicked)='onRatingClicked($event)'>
+              </app-star>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+  
+    </div>
+  </div>
+  

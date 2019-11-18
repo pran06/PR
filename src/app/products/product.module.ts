@@ -1,15 +1,27 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { ProductListComponent } from './product-list/product-list.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
+import { ConvertToSpacePipe } from '../shared/pipes/convert-to-space.pipe';
+import { RouterModule } from '@angular/router';
+import { ProductDetailGuard } from './product-detail.guard';
+import { SharedModule } from '../shared/shared.module';
+
 
 @NgModule({
-  declarations: [    
-    ProductListComponent,
+  declarations: [   
+    ProductListComponent, 
     ProductDetailsComponent,
-  ],
+    ConvertToSpacePipe,
+    ],
   imports: [
-    CommonModule
+    RouterModule.forChild([ 
+      {path:'products', component: ProductListComponent},
+      {
+       path:'products/:id', 
+       canActivate:[ProductDetailGuard],
+       component:ProductDetailsComponent
+     },]),
+     SharedModule
   ]
 })
 export class ProductModule { }
