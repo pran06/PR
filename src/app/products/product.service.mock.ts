@@ -10,6 +10,7 @@ export class ProductServiceStub {
         {
             "id": 1,
             "name": "Leaf Rake",
+            "brand": "brand1",
             "code": "GDN-0011",
             "releaseDate": "March 19, 2019",
             "description": "Leaf rake with 48-inch wooden handle.",
@@ -20,6 +21,7 @@ export class ProductServiceStub {
           {
             "id": 2,
             "name": "Garden Cart",
+            "brand": "brand1",
             "code": "GDN-0023",
             "releaseDate": "March 18, 2019",
             "description": "15 gallon capacity rolling garden cart",
